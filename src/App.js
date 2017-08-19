@@ -14,6 +14,7 @@ import Shop from "./pages/shop.js"
 
 
 
+
 export default class App extends Component{
 	  constructor(){
 	  	
@@ -25,6 +26,7 @@ export default class App extends Component{
 	  }
 	  
 	  render(){
+		 
 	  	
 	  	 return (
 	  	 	<Router>
@@ -33,7 +35,8 @@ export default class App extends Component{
 	  	 	    <Route path="/"  render={
 	  	 	    	({history,location})=>{   
 	  	 	    		
-	  	 	    		return <Aside  history={history} location={location.pathname}  aside={this.state.isShow} coverHide={this.asideHidden.bind(this)
+	  	 	    	
+	  	 	    		return <Aside  history={history} location={location}  aside={this.state.isShow} coverHide={this.asideHidden.bind(this)
 	  	 	    		
 	  	 	    		
 	  	 	    		}/>}
@@ -41,12 +44,13 @@ export default class App extends Component{
 	  	 	    
 	  	 	    }/>
 	  	 	    <Route path="/"  exact component={Home}/>
-			      <Route path="/movie" component={Movie}/>
+			    <Route path="/movie" component={Movie}/>
 	  	 	    <Route path="/moviepage" component={MoviePage}/>
-			     <Route path="/shop" component={Shop}/>
-				  <Route path="/me" component={Me}/>
+			    <Route path="/shop" component={Shop}/>
+				 <Route path="/me" component={Me}/>
 	  	 	 
-	  	  	  <Route path="/cart" component={Cart}/>
+	  	 	    <Route path="/cart" component={Cart}/>
+				
 	  	 	  
 	  	 	 
 	  	 	   

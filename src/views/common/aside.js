@@ -18,8 +18,9 @@ export default class Aside extends Component{
 	  		 
 	  	}
 	  		
-	  	
-	  	let data=SlideInfo.homeSilderBarData.map((item,index)=>{
+		  console.log(this.props.location.pathname)
+		let data=this.props.location.pathname==="/shop"?SlideInfo.shopSilderBarData:SlideInfo.homeSilderBarData		
+	  	let datas=data.map((item,index)=>{
 	  	 	 
 	  	 	  return <li key={index} class="border-bottom-1px" onClick={this.toAction.bind(this,item)}><p >{item.title}</p></li>
 	  	 	
@@ -32,7 +33,7 @@ export default class Aside extends Component{
 	  	 	
 	  	 	 <div class="asideBar" style={adideStyle}>
 	  	 	        <ul class="list">
-	  	 	           {data}
+	  	 	           {datas}
 	  	 	        </ul>
 	  	 	        
 	  	 	    

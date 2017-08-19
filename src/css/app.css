@@ -13,6 +13,7 @@
 	 background:#282828;
 	 display: flex;
 	 line-height: 50px;
+	z-index: 30
 	 
 }
 #root .header>span{
@@ -97,6 +98,11 @@
 	 position: absolute;
 	 top: 50px;
 	 bottom: 0;
-	 background: red;
-	 z-index: 20;
+	 overflow: hidden;
+	 
+}
+	
+#root .slide img{
+
+	  width: 100%
 }
