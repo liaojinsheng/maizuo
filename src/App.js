@@ -47,7 +47,7 @@ export default class App extends Component{
 			    <Route path="/movie" component={Movie}/>
 	  	 	    <Route path="/moviepage" component={MoviePage}/>
 			    <Route path="/shop" component={Shop}/>
-				 <Route path="/me" component={Me}/>
+				<Route path="/me" component={Me}/>
 	  	 	 
 	  	 	    <Route path="/cart" component={Cart}/>
 				

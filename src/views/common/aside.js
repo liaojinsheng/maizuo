@@ -18,7 +18,7 @@ export default class Aside extends Component{
 	  		 
 	  	}
 	  		
-		  console.log(this.props.location.pathname)
+		console.log(this.props.location.pathname)
 		let data=this.props.location.pathname==="/shop"?SlideInfo.shopSilderBarData:SlideInfo.homeSilderBarData		
 	  	let datas=data.map((item,index)=>{
 	  	 	 

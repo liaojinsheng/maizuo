@@ -3,8 +3,9 @@ import React,{Component} from "react"
 import Server from "../server/server.js"
 import InfiniteScroll from "react-infinite-scroll"
 import ReactPullToRefresh from "react-pull-to-refresh"
+import LazyLoad from 'react-lazyload';
 
-console.log("刷新"+ReactPullToRefresh)
+
 
 import "../css/home.css"
 let bannerSwiper=null
@@ -17,20 +18,26 @@ export default class Home extends Component{
 	  	
 		   super();
 		   this.state={
-			   slideData:[]
+			   slideData:[],
+			   playingMovie:[]
 		   }
 				  
 	  }
 	  render(){
-		
+		  
 		  let slide=this.state.slideData.map((item,index)=>{
 			     return  <div class="swiper-slide" key={index}><img src={item.imageUrl}/></div>
+		  })
+		
+		  let lis=this.state.playingMovie.map((item,index)=>{
+
+			   return <li key={index}><img src={item.cover.origin}/></li>
 		  })
 	  	
 	  	  return(
 	  	  	
 	  	  	 <div class="page" id="home" >
-					<div ref="bannerScroll" class="scroll">
+				<div ref="bannerScroll" class="scroll">
 				    <div class="wrap">
 					    <div class="swiper-container  slide" ref="swiper">
 							  <div class="swiper-wrapper">
@@ -38,23 +45,13 @@ export default class Home extends Component{
 							 </div>
 			             </div>
 						
+						 <ul class="list">
+								{lis}			
+						</ul>
+						<div class="moreMovie"><p>更多即将上映电影&nbsp;>></p></div>
 						
 									
-										 <ul class="list">
-															<li></li>
-															<li></li>
-															<li></li>
-															<li></li>
-															<li></li>
-															<li></li>
-															<li></li>
-															<li></li>
-															<li></li>
-															<li></li>
-															<li></li>
-						 									<li></li>
-						                  </ul>
-						
+										
 									
 								
                           
@@ -70,6 +67,7 @@ export default class Home extends Component{
 
 	
 	  componentWillMount(){
+		  //轮播
            Server.slideData().then((res)=>{
 			
 					this.setState({slideData:res.billboards})
@@ -84,13 +82,23 @@ export default class Home extends Component{
 				      
 					
 					
-					 bannerSwiper.update()
-					  bannerScroll.refresh()
-					 bannerSwiper.slideTo(1,0)
+					  bannerSwiper.update()
+					 
+					  bannerSwiper.slideTo(1,0)
 
 		   })
-
-         
+     //将要播放的电影
+		 
+		   Server.getPlayingData().then(
+			   
+			 (res)=>{
+				
+					  
+				 this.state.playingMovie=res
+			 });
+			
+			 (error)=>{console.log(error)}
+			
 	 
 		}
 
@@ -102,7 +110,13 @@ export default class Home extends Component{
 				})
 
 				bannerScroll=new  IScroll(this.refs.bannerScroll,{
+					 probType:3,
+
 					   
+				})
+				
+				bannerScroll.on("scrollStart",function(){
+					  this.refresh()
 				})
 
 			

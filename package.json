@@ -36,6 +36,7 @@
     "react-addons-css-transition-group": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-infinite-scroll": "^0.1.5",
+    "react-lazyload": "^2.2.7",
     "react-pull-to-refresh": "^1.1.1",
     "react-pullload": "^1.0.7",
     "react-router": "^4.1.2",
