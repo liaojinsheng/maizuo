@@ -14,8 +14,18 @@ function slideData(){
 		
 		 axios.get(`${Api.homeBannerApi}?__t=${new Date().getTime()}`).then((response)=>{
 			       
-					var arr=response.data.data
-					resolve(arr)
+					var arr=response.data.data.billboards
+					if(arr==null){
+						slideData()
+					}else{
+						//存到sessionStorage里
+						window.sessionStorage.setItem("lunbotu",JSON.stringify(response.data.data.billboards))
+					}
+					
+					
+					resolve(response.data.data.billboards)
+
+
 	 	      
 	    }).catch((err)=>{
 	 	 
@@ -37,7 +47,7 @@ function getPlayingData(){
            axios.get(`${Api.nowPlaingApi}?_t=${new Date().getTime()}`).then((response)=>{
 				
 				var arr= response.data.data.films
-				console.log(arr)
+				
 				if(arr!=undefined){
                     var  newArr=arr.map((item)=>{
 					   var obj2={}
@@ -76,6 +86,7 @@ function getcityData(){
 	   return new Promise((resolve,reject)=>{
 
 		       axios.get("/v4/api/city?__t=1503316745374").then((response)=>{
+				        
 				            var cicyData=[]
 					
 							var cityArr=response.data.data.cities
@@ -107,7 +118,7 @@ function getcityData(){
 								var Xcity=[]
 								var Ycity=[]
 								var Zcity=[]
-							console.log(cityArr)
+							
 						
 							for(var i=0;i<cityArr.length;i++){
 
@@ -199,34 +210,32 @@ function getcityData(){
 								  }
 						
 						cicyData=[
-									Acity,
-									Bcity,
-									Ccity,
-									Dcity,
-									Ecity,
-									Fcity,
-									Gcity,
-									Hcity,
+										{"A":Acity},
+										{"B":Bcity},
+										{"C":Ccity},
+										{"D":Dcity},
+										{"E":Ecity},
+										{"F":Fcity},
+										{"G":Gcity},
+										{"H":Hcity},
 
-									Icity,
-									Jcity,
-									Kcity,
-									Lcity,
+										{"J":Jcity},
+										{"K":Kcity},
+										{"L":Lcity},
 
-									Mcity,
-									Ncity,
-									Ocity,	
-									Pcity,
-									Qcity,
-									Rcity,
-									Scity,
-									Tcity,
-									Ucity,
-									Vcity,
-									Wcity,	
-									Xcity,
-									Ycity,
-									Zcity
+										{"M":Mcity},
+										{"N":Ncity},
+									
+										{"P":Pcity},
+										{"Q":Qcity},
+										{"R":Rcity},
+										{"S":Scity},
+										{"T":Tcity},
+										
+										{"W":Wcity},	
+										{"X":Xcity},
+										{"Y":Ycity},
+										{"Z":Zcity}
 								]
 							
 							

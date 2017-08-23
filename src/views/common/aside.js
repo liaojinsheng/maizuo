@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-
+import store from "../../store"
 import SlideInfo from "../../server/slideInfo.js"
 
 
@@ -20,13 +20,15 @@ export default class Aside extends Component{
 	  		
 		console.log(this.props.location.pathname)
 		let data=this.props.location.pathname==="/shop"?SlideInfo.shopSilderBarData:SlideInfo.homeSilderBarData		
-	  	let datas=data.map((item,index)=>{
+		let datas;
+		if(data){
+		     datas=data.map((item,index)=>{
 	  	 	 
 	  	 	  return <li key={index} class="border-bottom-1px" onClick={this.toAction.bind(this,item)}><p >{item.title}</p></li>
 	  	 	
 	  	 })
 	  
-	  	  
+		}
 	  	 return(
 	  	 <div>
 	  	  <div  class="cover" style={coverStyle} onClick={this.coverAction.bind(this)}></div>
@@ -56,6 +58,8 @@ export default class Aside extends Component{
 	   this.props.history.push(item.path)
 		 
 	   this.props.coverHide(item.header)
+	 
+	 
 	 
  	
  	   

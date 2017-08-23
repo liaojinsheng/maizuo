@@ -1,0 +1,50 @@
+
+#city{
+    overflow: hidden
+}
+
+#city .item{
+  
+    width:100%;
+     background:#fff;
+     display: flex;
+     flex-wrap: wrap;
+   
+     overflow: hidden
+}
+ #city .li{
+     width:25%;
+     float: left;
+     height:47px;
+     line-height: 47px;
+     text-align: center;   
+     font-size:14px;
+   
+
+ }
+ .border-bottom-1px{
+	  position: relative;
+}
+.border-bottom-1px:after{
+	
+	 content: "";
+	 position: absolute;
+	 display: block;
+	 border-bottom: 3px solid #ccc;
+	 height: 1px;
+	 bottom: -1px;
+	 width: 100%;
+	 transform:scaleY(0.5);
+	
+}
+#city .cityTitle{
+     width:100%;
+     height: 30px;
+     background:#ccc;
+     padding-left: 10px;
+     line-height: 30px
+}
+#city .selecCity{
+     color: orange;
+}
+

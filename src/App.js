@@ -11,11 +11,13 @@ import Me from "./pages/me.js"
 import Movie from "./pages/movie.js"
 import MoviePage from "./pages/moviePage.js"
 import Shop from "./pages/shop.js"
+import Store from "./store"
+import {connect} from "react-redux"
 
 
 
 
-export default class App extends Component{
+ class App extends Component{
 	  constructor(){
 	  	
 	  	  super()
@@ -77,3 +79,9 @@ export default class App extends Component{
 	}
 	
 }
+
+export default connect(
+	function(state){
+		return {}
+	}
+)(App)

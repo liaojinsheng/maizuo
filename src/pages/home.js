@@ -69,10 +69,16 @@ export default class Home extends Component{
 	  componentWillMount(){
 		  //轮播
            Server.slideData().then((res)=>{
-			
-					this.setState({slideData:res.billboards})
-
-					var data=this.state.slideData
+			      
+			        if(window.sessionStorage.getItem("lunbotu")){
+							 var data=JSON.parse(window.sessionStorage.getItem("lunbotu"))
+							    console.log(data)
+							 
+						     	this.setState({slideData:data})
+					}
+				
+                         
+					 var data=this.state.slideData
 					
 					  data.splice(0,0,data[data.length-1])
 					  data.push(data[1])
@@ -110,7 +116,7 @@ export default class Home extends Component{
 				})
 
 				bannerScroll=new  IScroll(this.refs.bannerScroll,{
-					 probType:3,
+					 probType:3
 
 					   
 				})
