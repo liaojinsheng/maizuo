@@ -48,7 +48,7 @@ function getPlayingData(){
 				
 				var arr= response.data.data.films
 				
-				if(arr!=undefined){
+				if(arr){
                     var  newArr=arr.map((item)=>{
 					   var obj2={}
 						  obj2.cover=item.cover
@@ -61,6 +61,9 @@ function getPlayingData(){
                           
 					 
 				})
+
+				}else{
+                    getPlayingData()
 
 				}
 				
@@ -254,10 +257,27 @@ function getcityData(){
 	   })
 }
 
+//请求影片里面的数据
+function  movieData(){
+	 return new Promise((resolve,reject)=>{
+		axios.get(`${Api.nowPlaingApi}?page=1&count=7`).then((response)=>{
+			  
+			console.log("调用了")
+			console.log(response)
+		}).catch((error)=>{
+			  console.log(error)
+		})
+		   
+		  
+		   
+		  
+	 })
+}
 export default{
 	slideData,
 	getPlayingData,
-	getcityData
+	getcityData,
+	movieData
 	
 	
 }

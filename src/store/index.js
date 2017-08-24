@@ -33,7 +33,8 @@ function reducer(state,action){
          case "changeCity":
         //    this.state.history.push("/")
           return Object.assign({},state,{
-               cityTitle:action.cityValue
+               cityTitle:action.cityValue,
+               headTitle:action.headtitle
           })
           default:
 

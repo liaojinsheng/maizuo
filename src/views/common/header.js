@@ -82,7 +82,7 @@ class Header extends Component{
 export default connect (
 	//输入逻辑，UI组件要使用的数据在这里定义
      function(state){
-		 console.log(state)
+		
 		  
 		 return{
 			  headTitle:state.headTitle,
@@ -90,6 +90,8 @@ export default connect (
 			  
 		 }
 	 },
+
+	
 	{
 	  toCity:function(){
 

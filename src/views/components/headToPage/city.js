@@ -108,7 +108,7 @@ class City extends Component {
     // }
     componentWillMount() {
         Server.getcityData().then((res) => {
-            console.log(res)
+           
             this.setState({
                 cityData: res
             })
@@ -139,23 +139,41 @@ export default connect(
     function (state) {
         return {}
     },
+
+
     function (dispatch, nextProps) {
         return {
             changeCity: function(value) {
-                console.log(this);
-                // console.log(value);
-                // console.log(nextProps)
-                // console.log(dispatch)
+              
+            
                 dispatch({
                     type: "changeCity",
-                    cityValue: value
+                    cityValue: value,
+                    headtitle:"卖座电影"
                 })
 
                 this.state.history.push("/")
             }
         }
     }
-    //输出逻辑，UI组件要改变state数据的方法在这里定义
+    //console.log(dispatch)  ƒ dispatch(action) {
+    //     if (!Object(__WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__["a" /* default */])(action)) {
+    //       throw new Error('Actions must be plain objects. ' + 'Use custom middlewar…
+    // app.js:38165 {match: {…}, location: {…}, history: {…}, staticContext: undefined}
+    // app.js:38163 安宁
+    // app.js:38164 ƒ dispatch(action) {
+    //     if (!Object(__WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__["a" /* default */])(action)) {
+    //       throw new Error('Actions must be plain objects. ' + 'Use custom middlewar…
+    // app.js:38165 
+    
+    
+    //console.log(nextProps)   {match: {…}, location: {…}, history: {…}, staticContext: undefined}
+   
+   
+   
+    // 输出逻辑有两种方法,上面的方法可以拿到this,下面的方法不可以拿到this
+    
+    // 输出逻辑，UI组件要改变state数据的方法在这里定义
     // {
     //     changeCity: function (value) {
     //         console.log(value);
@@ -165,4 +183,5 @@ export default connect(
     //         }
     //     }
     // }
+
 )(City)

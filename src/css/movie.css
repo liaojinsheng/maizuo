@@ -1,0 +1,31 @@
+#movie{
+     overflow: auto;
+     height: 100%;
+     width: 96%;
+     margin:auto;
+
+   
+}
+
+#movie .movie_header{
+    height: 40px;
+    border-bottom: 1px solid red
+}
+
+#movie .list1{
+    display: flex;
+    width:100%;
+}
+
+#movie .list1 li{
+    flex: 1;
+    line-height: 40px;
+    text-align: center;
+    font-size:15px;
+    
+} 
+#movie .list1 li.active{
+
+    border-bottom: 3px solid orangered
+}
+
