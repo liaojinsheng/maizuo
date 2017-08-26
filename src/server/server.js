@@ -258,12 +258,19 @@ function getcityData(){
 }
 
 //请求影片里面的数据
-function  movieData(){
+function  movieData(num){
 	 return new Promise((resolve,reject)=>{
-		axios.get(`${Api.nowPlaingApi}?page=1&count=7`).then((response)=>{
+		
+		
+
+		
+		
+		
+		axios.get(`${Api.nowPlaingApi}?page=${num}&count=7`).then((response)=>{
 			  
-			console.log("调用了")
-			console.log(response)
+				
+				 resolve(response.data.data.films)
+			
 		}).catch((error)=>{
 			  console.log(error)
 		})

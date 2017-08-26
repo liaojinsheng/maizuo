@@ -67,18 +67,21 @@ export default class Home extends Component{
 
 	
 	  componentWillMount(){
+
 		  //轮播
+		   
            Server.slideData().then((res)=>{
 			      
 			        if(window.sessionStorage.getItem("lunbotu")){
 							 var data=JSON.parse(window.sessionStorage.getItem("lunbotu"))
-							    console.log(data)
+							   
 							 
 						     	this.setState({slideData:data})
 					}
 				
                          
 					 var data=this.state.slideData
+					 console.log(data)
 					
 					  data.splice(0,0,data[data.length-1])
 					  data.push(data[1])
